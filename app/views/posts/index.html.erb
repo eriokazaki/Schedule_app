@@ -1,0 +1,50 @@
+<%= render "shared/header" %>
+
+<h3>スケジュール一覧</h3>
+
+<% if flash[:notice] %>
+   <p class="notice"><%= flash[:notice] %></p>
+ <% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>更新日時</th>
+      <th>詳細ページへのリンク</th>
+      <th>編集ページへのリンク</th>
+      <th>削除リンク</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @posts.count > 0 %>
+        <% @posts.each do |post| %>
+            <tr>
+                <td><%= post.id %></td>
+                <td><%= post.title %></td>
+                <td><%= post.start_at.to_s(:datetime_jp) %></td>
+                <td><%= post.end_at.to_s(:datetime_jp) %></td>
+                <td><%= post.is_all_day %>
+                    <strong>○</strong>
+                    <% end %>
+                </td>
+                <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+            </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "新規スケジュールを作成する", :new_post %></p>
+
+<%= render "shared/footer" %>
