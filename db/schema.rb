@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2023_04_13_143659) do
 
   create_table "posts", force: :cascade do |t|
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.boolean "is_all_day"
+    t.datetime "start_at", null: false
+    t.datetime "end_at", null: false
+    t.boolean "is_all_day", default: false, null: false
     t.text "memo"
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
