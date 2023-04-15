@@ -23,7 +23,11 @@
   </tr>
   <tr>
     <th>終日</th>
-    <td><%= @post.is_all_day %></td>
+    <td>
+      <% if @post.is_all_day %>
+      <strong>○</strong>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th>スケジュールメモ</th>
