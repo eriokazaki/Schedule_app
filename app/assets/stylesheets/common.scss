@@ -25,14 +25,36 @@ header {
   }
   
   .notice {
-    background-color: #ccf;
-    padding: 5px;
+    background-color: lightgreen;
+    width: 500px;
+    border: 1px solid green;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .failure {
+    background-color: hsl(0, 73%, 75%);
+    width: 500px;
+    border: 1px solid rgb(169, 9, 62);
+    text-align: center;
+    padding: 15px;
   }
 
   ul {
     list-style: none;
   }
 
-  .checkbox {
-    text-align: center;
+  td > a {
+    display: flex;
+    justify-content: center;
   }
+  
+  strong {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    color: red;
+  }
+  

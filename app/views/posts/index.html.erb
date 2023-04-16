@@ -1,10 +1,12 @@
-<%= render "shared/header" %>
+<% if flash[:success] %>
+   <p class="notice"><%= flash[:success] %></p>
+<% end %>
+
+<% if flash[:failure] %>
+   <p class="failure"><%= flash[:failure] %></p>
+<% end %>
 
 <h3>スケジュール一覧</h3>
-
-<% if flash[:notice] %>
-   <p class="notice"><%= flash[:notice] %></p>
- <% end %>
 
 <table>
   <thead>
@@ -29,22 +31,28 @@
                 <td><%= post.title %></td>
                 <td><%= post.start_at.to_s(:datetime_jp) %></td>
                 <td><%= post.end_at.to_s(:datetime_jp) %></td>
-                <td><%= post.is_all_day %>
+                <td>
+                  <% if post.is_all_day %>
                     <strong>○</strong>
-                    <% end %>
+                  <% end %>
                 </td>
-                <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+                <td><%= post.updated_at.to_s(:datetime_hour_jp) %></td>
                 <td>
+                  <%= link_to "詳細ページ", post %>
                 </td>
                 <td>
+                  <%= link_to "編集ページ", [:edit, post] %>
                 </td>
                 <td>
+                  <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除しますか？" } %>
                 </td>
             </tr>
-    <% end %>
+        <% end %>
+      <% else %>
+        <td colspan="9">現在登録しているスケジュールはありません</td>
+      <% end %>
   </tbody>
 </table>
 
 <p><%= link_to "新規スケジュールを作成する", :new_post %></p>
 
-<%= render "shared/footer" %>
