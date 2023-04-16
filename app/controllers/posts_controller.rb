@@ -15,7 +15,7 @@ class PostsController < ApplicationController
        redirect_to posts_path
      else
       flash.now[:failure] = "スケジュールを作成できませんでした"
-      render "new"
+      render :new
      end
   end
  
@@ -33,6 +33,7 @@ class PostsController < ApplicationController
       flash[:notice] = "スケジュールID「#{@post.id}」の情報を更新しました"
       redirect_to :post
     else
+      flash.now[:failure] ="スケジュールID「#{@post.id}」の情報を更新できませんでした"
       render "edit"
     end
   end
