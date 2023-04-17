@@ -3,8 +3,6 @@
    <p class="failure"><%= flash[:failure] %></p>
 <% end %>
 
-
-
 <%= render 'shared/error', obj: @post %>
 
 <%= form_with model: @post, local: true do |f| %>
